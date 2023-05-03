@@ -1,6 +1,7 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, applicationConfig, moduleMetadata } from '@storybook/angular';
 import Button from './button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
 
 // More on how to set up stories at: https://storybook.js.org/docs/angular/writing-stories/introduction
 const meta: Meta<Button> = {
@@ -19,11 +20,10 @@ const meta: Meta<Button> = {
     },
   },
   decorators: [
-    moduleMetadata({
-      imports: [HttpClientModule],
+    applicationConfig({
+      providers: [importProvidersFrom(HttpClientModule)],
     }),
-  ]
-  
+  ],
 };
 
 export default meta;
